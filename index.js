@@ -36,7 +36,23 @@ server.get('/api/users/:id', (req, res) => {
         })
     })
     .catch((err) => {
-        console.log(err);
+        console.log(err)
+        res.json({error: err})
+    })
+})
+//
+
+//CREATE NEW USER
+server.post('/api/users', (req, res) => {
+    const data = req.body;
+    db.insert(data)
+    .then((user) => {
+        res.status(200).json({
+            message: `new user: ${data.name} created!`
+        })
+    })
+    .catch((err) => {
+        console.log(err)
         res.json({error: err})
     })
 })
