@@ -57,3 +57,20 @@ server.post('/api/users', (req, res) => {
     })
 })
 //
+
+//UPDATE USER
+server.put('/api/users/:id', (req, res) => {
+    const id = req.params.id
+    const data = req.body
+    db.update(id, data)
+    .then((user) => {
+        res.status(200).json({
+            message: `user with ID: ${id} has been updated!`
+        })
+    })
+    .catch((err) => {
+        console.log(err)
+        res.json({error: err})
+    })
+})
+//
