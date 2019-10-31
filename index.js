@@ -25,3 +25,19 @@ server.get('/api/users', (req, res) => {
     })
 })
 //
+
+//RETURN USER BY ID
+server.get('/api/users/:id', (req, res) => {
+    const id = req.params.id;
+    db.findById(id)
+    .then((user) => {
+        res.status(200).json({
+            message: user
+        })
+    })
+    .catch((err) => {
+        console.log(err);
+        res.json({error: err})
+    })
+})
+//
