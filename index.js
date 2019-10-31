@@ -5,6 +5,7 @@ const server = express()
 
 const db = require('./data/db.js')
 
+//ALLOWS NODE TO READ JSON
 server.use(express.json());
 
 server.listen(4000, () => {
